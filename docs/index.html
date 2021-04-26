@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/vendor.css" />
+    <link rel="stylesheet" href="../src/polipop.css" />
+    <link rel="stylesheet" href="../src/default.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+    <title>Polipop demo</title>
+    <link rel="shortcut icon" type="image/jpg" href="assets/images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="assets/images/favicon.ico">
+  </head>
+  <body>
+
+    <!-- header -->
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <nav class="navbar navbar-expand-lg navbar-dark">
+            <a href="https://www.minitek.gr" class="navbar-brand"><img src="assets/images/logo.png" alt="Logo"></a>
+
+            <div class="navbar-collapse">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.minitek.gr/javascript/polipop">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.minitek.gr/support/documentation/javascript/polipop">Documentation</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.minitek.gr/javascript/polipop#license">License</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://github.com/minitek/polipop/releases/latest">Download</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- / header -->
+
+
+    <!-- hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-4">
+                  <h1 class="text-minitek">Polipop demo</h1>
+                </div>
+              </div>
+        </div>
+      </div>
+  </section>
+  <!-- / hero -->
+
+
+    <!-- container -->
+    <section class="overlay">
+      <div class="container overlay-item-top">
+        <div class="row">
+          <div class="col">
+            <div class="content boxed">
+              <div class="row separated">
+
+                <!-- content -->
+                <article class="col-md-8 content-body">
+
+                  <div class="card stacked mb-3">
+                    <div class="card-header p-2">
+                      <h4 class="fs-20">Info message</h4>
+                    </div>
+                    <div class="card-body">
+                      <button type="submit" class="btn btn-info btn-sm" id="info">Show info message</button>
+                    </div>
+                  </div>
+
+                  <div class="card stacked mb-3">
+                    <div class="card-header p-2">
+                      <h4 class="fs-20">Success message</h4>
+                    </div>
+                    <div class="card-body">
+                      <button type="submit" class="btn btn-success btn-sm" id="success">Show success message</button>
+                    </div>
+                  </div>
+
+                  <div class="card stacked mb-3">
+                    <div class="card-header p-2">
+                      <h4 class="fs-20">Warning message</h4>
+                    </div>
+                    <div class="card-body">
+                      <button type="submit" class="btn btn-warning btn-sm" id="warning">Show warning message</button>
+                    </div>
+                  </div>
+
+                  <div class="card stacked mb-3">
+                    <div class="card-header p-2">
+                      <h4 class="fs-20">Error message</h4>
+                    </div>
+                    <div class="card-body">
+                      <button type="submit" class="btn btn-danger btn-sm" id="error">Show error message</button>
+                    </div>
+                  </div>
+                  
+                  <div class="card stacked">
+                    <div class="card-header p-2">
+                      <h4 class="fs-20">Default message</h4>
+                    </div>
+                    <div class="card-body">
+                      <button type="submit" class="btn btn-outline-dark btn-sm" id="message">Show default message</button>
+                    </div>
+                  </div>
+
+                  <footer class="content-footer text-center">
+                    <a href="https://github.com/minitek/polipop" class="btn btn-outline-info"><i class="icon-github"></i>&nbsp;&nbsp;Back to Github</a>
+                  </footer>
+
+                </article>
+                <!-- / content -->
+
+
+                <!-- sidebar -->
+                <aside class="col-md-4 content-aside bg-light">
+
+                  <div id="sidebar"></div>
+
+                  <div class="widget pp-filters">
+
+                    <div class="mb-3">
+                      <label for="layout">Layout</label>
+                      <select class="custom-select custom-select-md" id="layout">
+                        <option value="popups">Popups</option>
+                        <option value="panel">Panel</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="position">Position</label>
+                      <select class="custom-select custom-select-md" id="position">
+                        <option value="top-left">Top left</option>
+                        <option value="center">Top center</option>
+                        <option value="top-right" selected>Top right</option>
+                        <option value="bottom-left">Bottom left</option>
+                        <option value="bottom-right">Bottom right</option>
+                        <option value="inline">Inline</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="insert">Insert</label>
+                      <select class="custom-select custom-select-md" id="insert">
+                        <option value="before" selected>Before</option>
+                        <option value="after">After</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="effect">Effect</label>
+                      <select class="custom-select custom-select-md" id="effect">
+                        <option value="fade" selected>Fade</option>
+                        <option value="slide">Slide</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="sticky" checked>
+                        <label class="custom-control-label" for="sticky">Sticky</label>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="pool">Pool</label>
+                      <input type="range" class="custom-range" id="pool" min="0" max="5" step="1" value="0">
+                      <small id="poolhelp" class="form-text text-muted text-right">
+                        Queue excess notifications: <span><b>off</b></span>
+                      </small>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="life">Life time</label>
+                      <input type="range" class="custom-range" id="life" min="100" max="4000" step="100" value="2000">
+                      <small id="lifehelp" class="form-text text-muted text-right">
+                        <span><b>2.0</b></span> seconds
+                      </small>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="pauseonhover" checked>
+                        <label class="custom-control-label" for="pauseonhover">Pause on hover</label>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </aside>
+                <!-- / sidebar -->
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- / container -->
+
+
+    <!-- go top -->
+    <div class="half">
+      <span class="half-bg bg-dark"></span>
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <div class="btn-frame">
+              <a data-scroll href="#top" class="btn btn-top btn-primary btn-ico btn-lg btn-rounded"><i class="icon-arrow-up2 fs-22"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / go top -->
+
+
+    <!-- footer -->
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="row gutter-3">
+          <div class="col-12 text-white text-center">
+            <p>Copyright © 2021 Yannis Maragos</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- / footer -->
+
+
+    <script src="../src/polipop.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
