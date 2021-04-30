@@ -1,0 +1,187 @@
+@import 'variables';
+
+/** Common **/
+
+.#{$block}_theme_default {
+    font-size: $base-font-size;
+
+    .#{$block}__closer {
+        font-size: $base-font-size;
+        font-weight: $large-font-weight;
+        color: $grey;
+
+        &:hover {
+            color: $dark-grey;
+        }
+    }
+
+    .#{$block}__closer-count {
+        background: $success-bg-color;
+        color: $white;
+        border-radius: $small-border-radius;
+        font-weight: $large-font-weight;
+    }
+
+    .#{$block}__notification {
+        color: $dark-grey;
+    }
+
+    .#{$block}__notification-close {
+        background-color: transparent;
+        color: inherit;
+        border-radius: 50%;
+
+        &:hover {
+            outline: none;
+            text-decoration: none;
+            background: $transparent-grey;
+        }
+    }
+
+    .#{$block}__notification-content {
+        line-height: $large-line-height;
+        font-weight: $base-font-weight;
+    }
+}
+
+/** Panel layout **/
+
+.#{$block}_layout_panel {
+    &.#{$block}_theme_default {
+        background-color: $panel-bg-color;
+        border-radius: $base-border-radius;
+        box-shadow: $light-shadow;
+
+        .#{$block}__header {
+            background-color: $lighter-grey;
+            height: $header-height;
+        }
+
+        .#{$block}__header-inner {
+            background-color: $header-bg-color;
+
+            &:hover {
+                .#{$block}__header-minimize {
+                    color: $dark-grey;
+                }
+            }
+        }
+
+        .#{$block}__header-title {
+            font-size: $header-font-size;
+            font-weight: $large-font-weight;
+            color: $grey;
+        }
+
+        .#{$block}__header-count {
+            background: $info-bg-color;
+            color: $white;
+            border-radius: $small-border-radius;
+            font-weight: $large-font-weight;
+        }
+
+        .#{$block}__header-minimize {
+            color: $light-grey;
+        }
+
+        .#{$block}__notification {
+            border-color: $lighter-grey;
+            box-shadow: $lighter-shadow;
+        }
+
+        .#{$block}__notification-title {
+            line-height: $base-line-height;
+        }
+
+        .#{$block}__closer {
+            font-weight: $large-font-weight;
+            color: $grey;
+
+            &:hover {
+                color: $dark-grey;
+            }
+        }
+
+        .#{$block}__notification_type_success {
+            color: $success-color;
+        }
+
+        .#{$block}__notification_type_info,
+        .#{$block}__notification_type_notice {
+            color: $info-color;
+        }
+
+        .#{$block}__notification_type_warning {
+            color: $warning-color;
+        }
+
+        .#{$block}__notification_type_error {
+            color: $error-color;
+        }
+
+        .#{$block}__notification_type_default {
+            color: $dark-grey;
+        }
+    }
+}
+
+/** Popups layout **/
+
+.#{$block}_layout_popups {
+    &.#{$block}_theme_default {
+        .#{$block}__notification {
+            box-shadow: $light-shadow;
+            border-radius: $base-border-radius;
+            background-color: $white;
+            border-color: $white;
+        }
+
+        .#{$block}__notification-title {
+            line-height: $large-line-height;
+        }
+
+        .#{$block}__closer {
+            background-color: $darker-grey;
+            box-shadow: $light-shadow;
+            border-radius: $base-border-radius;
+            font-weight: $base-font-weight;
+            color: $lightest-grey;
+            border-color: $darkest-grey;
+
+            &:hover {
+                color: $white;
+            }
+        }
+
+        .#{$block}__notification_type_success {
+            background-color: $success-bg-color;
+            color: $white;
+            border-color: $success-border-color;
+        }
+
+        .#{$block}__notification_type_info,
+        .#{$block}__notification_type_notice {
+            background-color: $info-bg-color;
+            color: $white;
+            border-color: $info-border-color;
+        }
+
+        .#{$block}__notification_type_warning {
+            background-color: $warning-bg-color;
+            color: $black;
+            border-color: $warning-border-color;
+        }
+
+        .#{$block}__notification_type_error {
+            background-color: $error-bg-color;
+            color: $white;
+            border-color: $error-border-color;
+        }
+
+        .#{$block}__notification_type_default {
+            background-color: $white;
+            color: $dark-grey;
+            border-color: $white;
+        }
+    }
+}

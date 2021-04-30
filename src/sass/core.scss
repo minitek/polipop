@@ -1,0 +1,211 @@
+@import 'variables';
+
+/** Common **/
+
+.#{$block} {
+    z-index: $base-z-index;
+    padding: 0;
+    box-sizing: border-box;
+    width: $base-width;
+    text-align: left;
+}
+
+.#{$block}_position_inline {
+    width: 100%;
+    transition: height $duration $easing;
+}
+
+.#{$block}_position_top-left {
+    position: fixed;
+    left: $horizontal-margin;
+    top: $vertical-margin;
+}
+
+.#{$block}_position_top-right {
+    position: fixed;
+    right: $horizontal-margin;
+    top: $vertical-margin;
+}
+
+.#{$block}_position_bottom-left {
+    position: fixed;
+    left: $horizontal-margin;
+    bottom: $vertical-margin;
+}
+
+.#{$block}_position_bottom-right {
+    position: fixed;
+    right: $horizontal-margin;
+    bottom: $vertical-margin;
+}
+
+.#{$block}_position_center {
+    position: fixed;
+    transform: translateX(-50%);
+    top: $vertical-margin;
+    left: 50%;
+}
+
+.#{$block}__notifications {
+    height: 100%;
+    position: relative;
+    z-index: $base-z-index - 1;
+}
+
+.#{$block}__notification {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+    margin: 0;
+    box-sizing: border-box;
+    text-align: left;
+    display: none;
+    position: absolute;
+    transition: top $duration $easing, bottom $duration $easing;
+    background-color: $white;
+}
+
+.#{$block}__notification-title {
+    font-size: $title-font-size;
+    font-weight: $base-font-weight;
+}
+
+.#{$block}__notification-close {
+    float: right;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    line-height: $base-line-height;
+    font-size: $title-font-size;
+    font-weight: $base-font-weight;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.#{$block}__notification-content {
+    font-size: $base-font-size;
+    box-sizing: border-box;
+    padding: 3px 0 0;
+}
+
+.#{$block}__closer {
+    line-height: $base-line-height;
+    padding: 4px 10px;
+    margin: 0;
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+}
+
+.#{$block}__closer-text {
+    vertical-align: middle;
+}
+
+.#{$block}__closer {
+    .#{$block}_position_top-left &,
+    .#{$block}_position_top-right &,
+    .#{$block}_position_center &,
+    .#{$block}_position_inline & {
+        top: 0;
+    }
+
+    .#{$block}_position_bottom-left &,
+    .#{$block}_position_bottom-right & {
+        bottom: 0;
+    }
+}
+
+/** Panel layout **/
+
+.#{$block}_layout_panel {
+    width: $panel-width;
+    max-width: 100%;
+    transition: height $duration $easing;
+    background-color: $panel-bg-color;
+    overflow: hidden;
+
+    .#{$block}__notification-title {
+        margin: 0 0 5px;
+    }
+
+    &.#{$block}_position_top-right,
+    &.#{$block}_position_top-left,
+    &.#{$block}_position_center,
+    &.#{$block}_position_inline {
+        .#{$block}__notification {
+            border-top: 1px solid transparent;
+        }
+    }
+
+    &.#{$block}_position_bottom-right,
+    &.#{$block}_position_bottom-left {
+        .#{$block}__notification {
+            border-bottom: 1px solid transparent;
+        }
+    }
+}
+
+.#{$block}__header {
+    position: relative;
+    z-index: $base-z-index;
+}
+
+.#{$block}__header-inner {
+    padding: 10px 15px;
+    line-height: $base-line-height;
+    cursor: pointer;
+    background-color: $header-bg-color;
+
+    span {
+        vertical-align: middle;
+    }
+}
+
+.#{$block}__header-count,
+.#{$block}__closer-count {
+    display: inline-block;
+    margin: 0 0 0 5px;
+    padding: 3px;
+    min-width: 20px;
+    height: 20px;
+    line-height: $small-line-height;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: $small-font-size;
+}
+
+.#{$block}__header-minimize {
+    display: none;
+    float: right;
+    font-weight: $large-font-weight;
+    font-size: $large-font-size;
+    line-height: $base-line-height;
+    color: $grey;
+}
+
+/** Popups layout **/
+
+.#{$block}_layout_popups {
+    .#{$block}__notification {
+        border: 1px solid transparent;
+        box-shadow: $light-shadow;
+    }
+
+    .#{$block}__notification-title {
+        margin: 0 0 10px;
+    }
+
+    .#{$block}__closer {
+        border: 1px solid transparent;
+        box-shadow: $light-shadow;
+        background-color: $darker-grey;
+        color: $white;
+    }
+}

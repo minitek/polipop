@@ -1,0 +1,60 @@
+$block: 'polipop';
+$base-z-index: 999;
+
+$base-width: 350px;
+$panel-width: 400px;
+$header-height: 44px;
+
+$small-line-height: 14px;
+$base-line-height: 22px;
+$large-line-height: 24px;
+
+$small-font-size: 12px;
+$base-font-size: 14px;
+$header-font-size: 15px;
+$title-font-size: 16px;
+$large-font-size: 20px;
+$base-font-weight: 400;
+$large-font-weight: 600;
+
+$small-border-radius: 3px;
+$base-border-radius: 5px;
+
+$duration: 0.25s;
+$easing: ease-in-out;
+
+$vertical-margin: 10px;
+$horizontal-margin: 10px;
+
+$light-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+$lighter-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+
+$white: #ffffff;
+$grey: #777777;
+$light-grey: #999999;
+$lighter-grey: #e8e8e8;
+$lightest-grey: #eeeeee;
+$transparent-grey: rgba(0, 0, 0, 0.05);
+$dark-grey: #555555;
+$darker-grey: #333333;
+$darkest-grey: #222222;
+$black: #111111;
+
+$panel-bg-color: #f2f7fa;
+$header-bg-color: #edf4f9;
+
+$success-bg-color: #0ec47d;
+$success-border-color: #0ec47d;
+$success-color: #0daf71;
+
+$info-bg-color: #00b1fe;
+$info-border-color: #00b1fe;
+$info-color: #009de0;
+
+$warning-bg-color: #ffc107;
+$warning-border-color: #ffc107;
+$warning-color: #ff8b07;
+
+$error-bg-color: #f45a53;
+$error-border-color: #f45a53;
+$error-color: #f45a53;

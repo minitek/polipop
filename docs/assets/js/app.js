@@ -1,6 +1,6 @@
 (function (document) {
 	'use strict';
-
+	
 	var pp;
 	var selector = 'mypolipop';
 
