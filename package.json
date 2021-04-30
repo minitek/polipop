@@ -1,0 +1,76 @@
+{
+    "name": "polipop",
+    "version": "1.0.0",
+    "description": "A dependency-free JavaScript library for creating discreet pop-up notifications.",
+    "author": "Yannis Maragos",
+    "license": "GPL-3.0",
+    "homepage": "https://github.com/minitek/polipop#readme",
+    "main": "dist/polipop.js",
+    "files": [
+        "src",
+        "dist"
+    ],
+    "directories": {
+        "doc": "docs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/minitek/polipop.git"
+    },
+    "bugs": {
+        "url": "https://github.com/minitek/polipop/issues"
+    },
+    "scripts": {
+        "dev": "webpack serve --open --config webpack.dev.js",
+        "delete:css.js": "rm -rf dist/css/*.js && rm -rf dist/css/*.js.map",
+        "license:min.js": "cat src/license.txt dist/polipop.min.js > dist/polipop.min.js.tmp && mv dist/polipop.min.js.tmp dist/polipop.min.js",
+        "license:js": "cat src/license.txt dist/polipop.js > dist/polipop.js.tmp && mv dist/polipop.js.tmp dist/polipop.js",
+        "license": "npm run license:js && npm run license:min.js",
+        "min:js": "MIN_POLIPOP=1 webpack --config webpack.prod.js",
+        "min:css": "MIN_POLIPOP=1 webpack --config webpack.css.js && npm run delete:css.js",
+        "min:all": "npm run min:js && npm run min:css",
+        "build:js": "MIN_POLIPOP=0 webpack --config webpack.prod.js",
+        "build:css": "MIN_POLIPOP=0 webpack --config webpack.css.js && npm run delete:css.js",
+        "copy:docs": "cp -r dist/* docs/dist/",
+        "build:all": "npm run build:js && npm run build:css",
+        "build": "npm run clean && npm run build:all && npm run min:all && ./bash/prettier.sh && npm run license && npm run copy:docs",
+        "clean:dist": "find dist/ -type f -delete",
+        "clean:docs": "find docs/dist/ -type f -delete",
+        "clean": "npm run clean:dist && npm run clean:docs"
+    },
+    "keywords": [
+        "DOM",
+        "browser",
+        "notification",
+        "growl",
+        "popup",
+        "queue",
+        "message",
+        "log",
+        "notice",
+        "warning",
+        "error"
+    ],
+    "devDependencies": {
+        "@babel/core": "^7.13.16",
+        "@babel/preset-env": "^7.13.15",
+        "autoprefixer": "^10.2.5",
+        "babel-loader": "^8.2.2",
+        "css-loader": "^5.2.4",
+        "css-minimizer-webpack-plugin": "^2.0.0",
+        "eslint": "^7.25.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "mini-css-extract-plugin": "^1.5.1",
+        "postcss": "^8.2.13",
+        "postcss-discard-comments": "^5.0.0",
+        "postcss-loader": "^5.2.0",
+        "prettier": "^2.2.1",
+        "sass": "^1.32.11",
+        "sass-loader": "^11.0.1",
+        "style-loader": "^2.0.0",
+        "webpack": "^5.36.0",
+        "webpack-cli": "^4.6.0",
+        "webpack-dev-server": "^3.11.2"
+    }
+}
