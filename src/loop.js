@@ -1,6 +1,5 @@
 import { _dispatch } from './utils';
-import { _render } from './components';
-import { _animate } from './components';
+import { _render, _animate } from './components';
 
 /**
  * Checks for expired notification elements, toggles the visibility of the closer
@@ -17,7 +16,7 @@ export function _loop() {
 
     if (!self.elements)
         self.elements = self._container.querySelectorAll(
-            '.' + self._class['block__notification']
+            '.' + self._class.block__notification
         );
 
     self.elements.forEach((element) => {

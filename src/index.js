@@ -1,7 +1,6 @@
 import defaults from './defaults';
-import { _extend } from './utils';
+import { _extend, _dispatch } from './utils';
 import { _init } from './init';
-import { _dispatch } from './utils';
 import { _updateCloser } from './components';
 
 /**
@@ -166,15 +165,15 @@ export default class Polipop {
          * @type {Object}
          */
         this._class = {};
-        this._class['block'] = this.options.block;
-        this._class['block_position'] =
+        this._class.block = this.options.block;
+        this._class.block_position =
             this.options.block + '_position_' + this.options.position;
-        this._class['block_theme'] =
+        this._class.block_theme =
             this.options.block + '_theme_' + this.options.theme;
-        this._class['block_layout'] =
+        this._class.block_layout =
             this.options.block + '_layout_' + this.options.layout;
-        this._class['block_open'] = this.options.block + '_open';
-        this._class['block__header'] = this.options.block + '__header';
+        this._class.block_open = this.options.block + '_open';
+        this._class.block__header = this.options.block + '__header';
         this._class['block__header-inner'] =
             this.options.block + '__header-inner';
         this._class['block__header-title'] =
@@ -183,22 +182,21 @@ export default class Polipop {
             this.options.block + '__header-count';
         this._class['block__header-minimize'] =
             this.options.block + '__header-minimize';
-        this._class['block__notifications'] =
+        this._class.block__notifications =
             this.options.block + '__notifications';
-        this._class['block__closer'] = this.options.block + '__closer';
+        this._class.block__closer = this.options.block + '__closer';
         this._class['block__closer-text'] =
             this.options.block + '__closer-text';
         this._class['block__closer-count'] =
             this.options.block + '__closer-count';
-        this._class['block__notification'] =
-            this.options.block + '__notification';
+        this._class.block__notification = this.options.block + '__notification';
         this._class['block__notification-title'] =
             this.options.block + '__notification-title';
         this._class['block__notification-close'] =
             this.options.block + '__notification-close';
         this._class['block__notification-content'] =
             this.options.block + '__notification-content';
-        this._class['block__notification_type_'] =
+        this._class.block__notification_type_ =
             this.options.block + '__notification_type_';
 
         _init.call(this);
@@ -266,11 +264,11 @@ export default class Polipop {
 
         if (this.options.layout === 'panel') {
             // Increment count in panel header.
-            const header_count = this._wrapper.querySelector(
+            const headerCount = this._wrapper.querySelector(
                 '.' + this._class['block__header-count']
             );
-            let count = header_count.textContent;
-            header_count.textContent = ++count;
+            let count = headerCount.textContent;
+            headerCount.textContent = ++count;
         }
 
         this.queue.push(notification);
@@ -323,7 +321,7 @@ export default class Polipop {
         const self = this;
 
         self._container
-            .querySelectorAll('.' + self._class['block__notification'])
+            .querySelectorAll('.' + self._class.block__notification)
             .forEach((element) => {
                 _dispatch(element, 'Polipop.beforeClose');
             });

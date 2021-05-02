@@ -148,11 +148,11 @@ export function _render(notification) {
     const self = this;
 
     const element = document.createElement('div');
-    element.classList.add(self._class['block__notification']);
+    element.classList.add(self._class.block__notification);
 
     if (notification.type)
         element.classList.add(
-            self._class['block__notification_type_'] + notification.type
+            self._class.block__notification_type_ + notification.type
         );
 
     const button = document.createElement('button');
@@ -207,7 +207,7 @@ export function _render(notification) {
             self._container.insertBefore(
                 element,
                 self._container.querySelectorAll(
-                    '.' + self._class['block__notification']
+                    '.' + self._class.block__notification
                 )[0]
             );
 
@@ -242,14 +242,14 @@ export function _render(notification) {
         }
 
         self.elements = self._container.querySelectorAll(
-            '.' + self._class['block__notification']
+            '.' + self._class.block__notification
         );
 
         if (self.options.layout === 'panel') {
             self._wrapper.querySelector(
                 '.' + self._class['block__header-minimize']
             ).style.display = 'block';
-            self._wrapper.classList.add(self._class['block_open']);
+            self._wrapper.classList.add(self._class.block_open);
         }
 
         self._wrapper.style.height = self.wrapperHeight + 'px';
@@ -309,16 +309,16 @@ export function _render(notification) {
             self._overflow = false;
             _updateCloser.call(self);
             self.elements = self._container.querySelectorAll(
-                '.' + self._class['block__notification']
+                '.' + self._class.block__notification
             );
 
             if (self.options.layout === 'panel') {
                 // Decrement count in panel header.
-                const header_count = self._wrapper.querySelector(
+                const headerCount = self._wrapper.querySelector(
                     '.' + self._class['block__header-count']
                 );
-                let count = header_count.textContent;
-                header_count.textContent = --count;
+                let count = headerCount.textContent;
+                headerCount.textContent = --count;
             }
 
             _checkOverflow.call(self);
@@ -356,10 +356,10 @@ function _checkOverflow() {
         const element =
             this.options.insert === 'after'
                 ? this._container.querySelectorAll(
-                      '.' + this._class['block__notification']
+                      '.' + this._class.block__notification
                   )[0] // Get first element.
                 : this._container.querySelectorAll(
-                      '.' + this._class['block__notification'] + ':last-child'
+                      '.' + this._class.block__notification + ':last-child'
                   )[0]; // Get last element.
 
         _dispatch(element, 'Polipop.beforeClose');
