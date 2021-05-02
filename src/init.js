@@ -15,10 +15,7 @@ export function _init() {
     self._selector = self._selector.replace(/\s/g, '');
     self._wrapper = document.querySelector(self._selector);
 
-    if (
-        self._wrapper &&
-        self._wrapper.classList.contains(self._class['block'])
-    ) {
+    if (self._wrapper && self._wrapper.classList.contains(self._class.block)) {
         console.log(
             'Error: Selector with id "' +
                 self.options.selector +
@@ -34,10 +31,10 @@ export function _init() {
     }
 
     self._wrapper.classList.add(
-        self._class['block'],
-        self._class['block_position'],
-        self._class['block_theme'],
-        self._class['block_layout']
+        self._class.block,
+        self._class.block_position,
+        self._class.block_theme,
+        self._class.block_layout
     );
     self._viewportHeight =
         window.innerHeight || document.documentElement.clientHeight;
@@ -49,69 +46,69 @@ export function _init() {
             : self._wrapper.getBoundingClientRect().top;
 
     self._container = document.createElement('div');
-    self._container.classList.add(self._class['block__notifications']);
+    self._container.classList.add(self._class.block__notifications);
 
     if (self.options.layout === 'popups') self._wrapper.style.height = 0 + 'px';
     else if (self.options.layout === 'panel') {
         const header = document.createElement('div');
-        header.classList.add(self._class['block__header']);
+        header.classList.add(self._class.block__header);
 
-        const header_inner = document.createElement('div');
-        header_inner.classList.add(self._class['block__header-inner']);
+        const headerInner = document.createElement('div');
+        headerInner.classList.add(self._class['block__header-inner']);
 
-        const header_title = document.createElement('span');
-        header_title.classList.add(self._class['block__header-title']);
-        header_title.innerHTML = self.options.headerText;
-        header_inner.appendChild(header_title);
+        const headerTitle = document.createElement('span');
+        headerTitle.classList.add(self._class['block__header-title']);
+        headerTitle.innerHTML = self.options.headerText;
+        headerInner.appendChild(headerTitle);
 
-        const header_count = document.createElement('span');
-        header_count.classList.add(self._class['block__header-count']);
-        header_count.textContent = '0';
-        header_inner.appendChild(header_count);
+        const headerCount = document.createElement('span');
+        headerCount.classList.add(self._class['block__header-count']);
+        headerCount.textContent = '0';
+        headerInner.appendChild(headerCount);
 
-        const header_minimize = document.createElement('div');
-        header_minimize.classList.add(self._class['block__header-minimize']);
-        header_minimize.innerHTML = '&equiv;';
-        header_inner.appendChild(header_minimize);
+        const headerMinimize = document.createElement('div');
+        headerMinimize.classList.add(self._class['block__header-minimize']);
+        headerMinimize.innerHTML = '&equiv;';
+        headerInner.appendChild(headerMinimize);
 
-        header.appendChild(header_inner);
+        header.appendChild(headerInner);
         self._wrapper.appendChild(header);
 
-        header_inner.style.height = header.offsetHeight - 1 + 'px';
-        self.wrapperHeight += header_inner.offsetHeight;
+        headerInner.style.height = header.offsetHeight - 1 + 'px';
+        self.wrapperHeight += headerInner.offsetHeight;
         self._wrapper.style.height = self.options.hideEmpty
             ? 0 + 'px'
-            : header_inner.offsetHeight + 'px';
+            : headerInner.offsetHeight + 'px';
 
         header.addEventListener('click', () => {
             // Toggle panel height.
             self._wrapper.style.height = self._wrapper.classList.contains(
-                self._class['block_open']
+                self._class.block_open
             )
-                ? header_inner.offsetHeight + 'px'
+                ? headerInner.offsetHeight + 'px'
                 : self.wrapperHeight + 'px';
-            self._wrapper.classList.toggle(self._class['block_open']);
+            self._wrapper.classList.toggle(self._class.block_open);
         });
 
         self._container.style.height =
-            'calc(100% - ' + header_inner.style.height + ')';
+            'calc(100% - ' + headerInner.style.height + ')';
     }
 
     self._wrapper.appendChild(self._container);
 
     if (self.options.closer) {
         self._closer = document.createElement('div');
-        self._closer.classList.add(self._class['block__closer']);
+        self._closer.classList.add(self._class.block__closer);
 
-        const closer_text = document.createElement('span');
-        closer_text.classList.add(self._class['block__closer-text']);
-        closer_text.innerHTML = self.options.closeText;
-        self._closer.appendChild(closer_text);
+        const closerText = document.createElement('span');
+        closerText.classList.add(self._class['block__closer-text']);
+        closerText.innerHTML = self.options.closeText;
+        self._closer.appendChild(closerText);
 
-        const closer_count = document.createElement('span');
-        closer_count.classList.add(self._class['block__closer-count']);
-        closer_count.style.display = 'none';
-        self._closer.appendChild(closer_count);
+        const closerCount = document.createElement('span');
+        closerCount.classList.add(self._class['block__closer-count']);
+        closerCount.style.display = 'none';
+        self._closer.appendChild(closerCount);
 
         if (self.options.insert === 'after')
             self._container.appendChild(self._closer);
@@ -142,7 +139,7 @@ export function _init() {
         if (self.options.pauseOnHover) {
             // Keep track of how much time is left for each notification.
             self._container
-                .querySelectorAll('.' + self._class['block__notification'])
+                .querySelectorAll('.' + self._class.block__notification)
                 .forEach((element) => {
                     if (element.timeLeft === false) {
                         let timePassed =
