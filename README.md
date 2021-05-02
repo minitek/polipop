@@ -1,6 +1,8 @@
 # Polipop
 
-Description.
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
+
+A dependency-free JavaScript library for creating discreet pop-up notifications.
 
 ## License
 
