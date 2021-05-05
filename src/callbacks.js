@@ -204,7 +204,7 @@ export function onPolipopClose(notification, element) {
     const animation = animateElement.apply(self, [element, 'out']);
 
     animation.finished.then(function () {
-        repositionElements.apply(self, [element, 'remove']);
+        repositionElements.call(self, element);
         self._wrapper.style.height = self.wrapperHeight + 'px';
 
         if (notification.close.apply(self, [notification, element]) !== false)
