@@ -1,6 +1,7 @@
 /**
- * @const
  * The default configuration options.
+ *
+ * @const
  */
 export default {
     /**
@@ -21,43 +22,44 @@ export default {
 
     /**
      * The position of the wrapper element within the viewport. Can only be set on
-     * class instantiation.
+     * class instantiation. Accepted values:
+     * - 'top-left'
+     * - 'center'
+     * - 'top-right'
+     * - 'inline'
+     * - 'bottom-right'
+     * - 'bottom-left'
      *
-     * @type {String} Accepted values:
-     *     - 'top-left'
-     *     - 'center'
-     *     - 'top-right'
-     *     - 'inline'
-     *     - 'bottom-right'
-     *     - 'bottom-left'
+     * @type {String}
      */
     position: 'top-right',
 
     /**
      * The layout of the Polipop wrapper. Can only be set on class instantiation.
+     * Accepted values:
+     * - 'popups'
+     * - 'panel'
      *
-     * @type {String} Accepted values:
-     *     - 'popups'
-     *     - 'panel'
+     * @type {String}
      */
     layout: 'popups',
 
     /**
-     * The css theme of the Polipop wrapper.
+     * The css theme of the Polipop wrapper. Accepted values:
+     * - 'default'
+     * - or any custom theme
      *
-     * @type {String} Accepted values:
-     *     - 'default'
-     *     - or any custom theme
+     * @type {String}
      */
     theme: 'default',
 
     /**
      * Designates whether a notification element should be appended or prepended to the
-     * notifications container.
+     * notifications container. Accepted values:
+     * - 'after'
+     * - 'before'
      *
-     * @type {String} Accepted values:
-     *     - 'after'
-     *     - 'before'
+     * @type {String}
      */
     insert: 'after',
 
@@ -153,23 +155,24 @@ export default {
 
     /**
      * The animation effect when adding or removing notification elements.
+     * Accepted values:
+     * - 'fade'
+     * - 'slide'
      *
-     * @type {String} Accepted values:
-     *     - 'fade'
-     *     - 'slide'
+     * @type {String}
      */
     effect: 'fade',
 
     /**
-     * The rate of the animation's change over time.
+     * The rate of the animation's change over time. Accepted values:
+     * - 'linear'
+     * - 'ease'
+     * - 'ease-in'
+     * - 'ease-out'
+     * - 'ease-in-out'
+     * - or a custom 'cubic-bezier' value
      *
-     * @type {String} Accepted values:
-     *     - 'linear'
-     *     - 'ease'
-     *     - 'ease-in'
-     *     - 'ease-out'
-     *     - 'ease-in-out'
-     *     - or a custom 'cubic-bezier' value
+     * @type {String}
      */
     easing: 'linear',
 
@@ -247,10 +250,10 @@ export default {
 
     /**
      * A callback function invoked immediately after a notification element has been
-     * clicked. The EventTarget, the notification object and the notification element
+     * clicked. The MouseEvent, the notification object and the notification element
      * are passed to the function as arguments.
      *
-     * @type {function(EventTarget, object, Element)}
+     * @type {function(MouseEvent, object, Element)}
      */
     click: function () {},
 };

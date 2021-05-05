@@ -1,7 +1,7 @@
 import defaults from './defaults';
 import { _extend, _dispatch } from './utils';
-import { _init } from './init';
-import { _updateCloser } from './components';
+import { getBemClasses, _init } from './init';
+import { updateHeaderCount, updateCloser } from './control';
 
 /**
  * Polipop creates discreet pop-up notifications. Notifications are first added
@@ -124,7 +124,7 @@ export default class Polipop {
         this._overflow = false;
 
         /**
-         * The return value of the call to setTimeout() in the _resize function.
+         * The return value of the call to setTimeout() in the checkOverflow function.
          *
          * @private
          * @type {Number}
@@ -164,40 +164,7 @@ export default class Polipop {
          * @private @const
          * @type {Object}
          */
-        this._class = {};
-        this._class.block = this.options.block;
-        this._class.block_position =
-            this.options.block + '_position_' + this.options.position;
-        this._class.block_theme =
-            this.options.block + '_theme_' + this.options.theme;
-        this._class.block_layout =
-            this.options.block + '_layout_' + this.options.layout;
-        this._class.block_open = this.options.block + '_open';
-        this._class.block__header = this.options.block + '__header';
-        this._class['block__header-inner'] =
-            this.options.block + '__header-inner';
-        this._class['block__header-title'] =
-            this.options.block + '__header-title';
-        this._class['block__header-count'] =
-            this.options.block + '__header-count';
-        this._class['block__header-minimize'] =
-            this.options.block + '__header-minimize';
-        this._class.block__notifications =
-            this.options.block + '__notifications';
-        this._class.block__closer = this.options.block + '__closer';
-        this._class['block__closer-text'] =
-            this.options.block + '__closer-text';
-        this._class['block__closer-count'] =
-            this.options.block + '__closer-count';
-        this._class.block__notification = this.options.block + '__notification';
-        this._class['block__notification-title'] =
-            this.options.block + '__notification-title';
-        this._class['block__notification-close'] =
-            this.options.block + '__notification-close';
-        this._class['block__notification-content'] =
-            this.options.block + '__notification-content';
-        this._class.block__notification_type_ =
-            this.options.block + '__notification_type_';
+        this._classes = getBemClasses(this.options);
 
         _init.call(this);
         _dispatch(this._wrapper, 'Polipop.ready');
@@ -259,20 +226,11 @@ export default class Polipop {
      */
     add(notification) {
         if (this._disable) return;
-
         if (!notification.add) notification.add = this.options.add; // Inherit 'add' callback from configuration options.
-
-        if (this.options.layout === 'panel') {
-            // Increment count in panel header.
-            const headerCount = this._wrapper.querySelector(
-                '.' + this._class['block__header-count']
-            );
-            let count = headerCount.textContent;
-            headerCount.textContent = ++count;
-        }
+        if (this.options.layout === 'panel') updateHeaderCount.call(this, 1);
 
         this.queue.push(notification);
-        _updateCloser.call(this);
+        updateCloser.call(this);
         notification.add.call(this, notification);
     }
 
@@ -321,7 +279,7 @@ export default class Polipop {
         const self = this;
 
         self._container
-            .querySelectorAll('.' + self._class.block__notification)
+            .querySelectorAll('.' + self._classes.block__notification)
             .forEach((element) => {
                 _dispatch(element, 'Polipop.beforeClose');
             });
