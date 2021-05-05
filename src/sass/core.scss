@@ -11,6 +11,7 @@
 }
 
 .#{$block}_position_inline {
+    position: relative;
     width: 100%;
     transition: height $duration $easing;
 }

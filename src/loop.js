@@ -1,5 +1,5 @@
 import { _dispatch } from './utils';
-import { _render, _animate } from './components';
+import { renderNotification, animateElement } from './control';
 
 /**
  * Checks for expired notification elements, toggles the visibility of the closer
@@ -11,22 +11,34 @@ import { _render, _animate } from './components';
  */
 export function _loop() {
     const self = this;
-
     if (self._pause) return;
 
     if (!self.elements)
         self.elements = self._container.querySelectorAll(
-            '.' + self._class.block__notification
+            '.' + self._classes.block__notification
         );
+
+    expirationControl.call(self);
+    toggleCloser.call(self);
+    renderNotifications.call(self);
+}
+
+/**
+ * Checks for expired notification elements.
+ *
+ * @this {Polipop} The Polipop instance.
+ *
+ * @return {void}
+ */
+function expirationControl() {
+    const self = this;
+    const notHoverPause =
+        self._pauseOnHover === undefined || !self._pauseOnHover;
 
     self.elements.forEach((element) => {
         if (!element.hasChildNodes()) return;
 
-        const notHoverPause =
-            self._pauseOnHover === undefined || !self._pauseOnHover;
-
         if (element.timeLeft === false || element.timeLeft === 0) {
-            // Check for expired notifications.
             const hasExpired =
                 element.created !== undefined &&
                 new Date().getTime() - element.created.getTime() >
@@ -43,20 +55,29 @@ export function _loop() {
             element.timeLeft = false;
         }
     });
+}
 
+/**
+ * Toggles the visibility of the closer button element.
+ *
+ * @this {Polipop} The Polipop instance.
+ *
+ * @return {void}
+ */
+function toggleCloser() {
+    const self = this;
     const closerExistsAndHidden =
         self.options.closer !== false &&
         self._closer &&
         self._closer.style.display === 'none';
 
     if (self.elements.length > 0 && closerExistsAndHidden) {
-        // Control visibility of closer button.
         self._closer.open = true;
         self._closer.style.display = 'block';
         self.wrapperHeight += self._closerHeight;
         self._wrapper.style.height = self.wrapperHeight + 'px';
 
-        _animate.apply(self, [self._closer, 'in']);
+        animateElement.apply(self, [self._closer, 'in']);
     } else if (
         self.elements.length === 0 &&
         self.queue.length === 0 &&
@@ -64,7 +85,7 @@ export function _loop() {
         self._closer.open
     ) {
         self._closer.open = false;
-        const animation = _animate.apply(self, [self._closer, 'out']);
+        const animation = animateElement.apply(self, [self._closer, 'out']);
 
         animation.finished.then(function () {
             self.wrapperHeight -= self._closerHeight;
@@ -73,7 +94,7 @@ export function _loop() {
 
             if (self.options.layout === 'panel') {
                 self._wrapper.querySelector(
-                    '.' + self._class['block__header-minimize']
+                    '.' + self._classes['block__header-minimize']
                 ).style.display = 'none';
 
                 if (self.options.hideEmpty)
@@ -81,6 +102,17 @@ export function _loop() {
             }
         });
     }
+}
+
+/**
+ * Renders the notification elements.
+ *
+ * @this {Polipop} The Polipop instance.
+ *
+ * @return {void}
+ */
+function renderNotifications() {
+    const self = this;
 
     if (
         (self._overflow &&
@@ -93,5 +125,5 @@ export function _loop() {
     const poolFitsMore =
         self.options.pool === 0 || self.elements.length < self.options.pool;
 
-    if (poolFitsMore) _render.call(self, self.queue.shift()); // Render next notification element in queue.
+    if (poolFitsMore) renderNotification.call(self, self.queue.shift());
 }
