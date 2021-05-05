@@ -6,7 +6,6 @@
     font-size: $base-font-size;
 
     .#{$block}__closer {
-        font-size: $base-font-size;
         font-weight: $large-font-weight;
         color: $grey;
 
@@ -54,7 +53,6 @@
 
         .#{$block}__header {
             background-color: $lighter-grey;
-            height: $header-height;
         }
 
         .#{$block}__header-inner {
@@ -85,8 +83,7 @@
         }
 
         .#{$block}__notification {
-            border-color: $lighter-grey;
-            box-shadow: $lighter-shadow;
+            border-color: $lightest-grey;
         }
 
         .#{$block}__notification-title {
@@ -121,6 +118,22 @@
 
         .#{$block}__notification_type_default {
             color: $dark-grey;
+        }
+
+        &.#{$block}_position_top-right,
+        &.#{$block}_position_top-left,
+        &.#{$block}_position_center,
+        &.#{$block}_position_inline {
+            .#{$block}__notification {
+                box-shadow: $bottom-shadow;
+            }
+        }
+
+        &.#{$block}_position_bottom-right,
+        &.#{$block}_position_bottom-left {
+            .#{$block}__notification {
+                box-shadow: $top-shadow;
+            }
         }
     }
 }
