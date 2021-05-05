@@ -241,7 +241,7 @@ export function overflow() {
  * An element is positioned after or before its closest sibling.
  *
  * @param {Element} element A notification element that is added or removed.
- * @param {String} insert Designates whether the notification element is appended or
+ * @param {String} [insert] Designates whether the notification element is appended or
  * prepended to the notifications container. Accepted values:
  * - 'after'
  * - 'before'
@@ -295,60 +295,38 @@ export function positionElement(element, insert) {
  * element.
  *
  * @param {Element} element A notification element that is added or removed.
- * @param {String} action Whether the element is added or removed.
- *     Accepted values:
- *     - 'add'
- *     - 'remove'
  * @this {Polipop} The Polipop instance.
  *
  * @return {void}
  */
-export function repositionElements(element, action) {
+export function repositionElements(element) {
     const self = this;
-    let _insert, _control;
     let _position = 'top';
-    let _operator = 1;
+    let _control;
     const index = Array.prototype.indexOf.call(self.elements, element);
 
     if (self.options.position.startsWith('bottom-')) {
         _position = 'bottom';
-        if (self.options.insert === 'after') _insert = 'previous';
-        if (action === 'remove') {
-            _control = (i) => {
-                return i > index;
-            };
-            _operator = -1;
-        } else if (action === 'add' && _insert === 'previous')
-            _control = (i) => {
-                return i === self.elements.length - 1;
-            };
+        _control = (i) => {
+            return i > index;
+        };
     } else {
-        if (self.options.insert === 'before') _insert = 'previous';
-        if (action === 'remove') {
-            _control = (i) => {
-                return i <= index;
-            };
-            _operator = -1;
-        } else if (action === 'add' && _insert === 'previous')
-            _control = (i) => {
-                return i === 0;
-            };
+        _control = (i) => {
+            return i <= index;
+        };
     }
 
-    if (action === 'remove' || (action === 'add' && _insert === 'previous')) {
-        self.elements.forEach((el, i) => {
-            if (_control(i)) return;
+    self.elements.forEach((el, i) => {
+        if (_control(i)) return;
 
-            const _elementPosition =
-                parseInt(el.style[_position], 10) +
-                _operator *
-                    (self.options.layout === 'popups'
-                        ? element.offsetHeight + self.options.spacing
-                        : element.offsetHeight);
+        const _elementPosition =
+            parseInt(el.style[_position], 10) -
+            (self.options.layout === 'popups'
+                ? element.offsetHeight + self.options.spacing
+                : element.offsetHeight);
 
-            el.style[_position] = _elementPosition + 'px';
-        });
-    }
+        el.style[_position] = _elementPosition + 'px';
+    });
 }
 
 /**
