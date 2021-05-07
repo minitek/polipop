@@ -7,6 +7,8 @@ module.exports = {
         polipop: './src/index.js',
         'css/polipop.core': './src/sass.js/core.scss.js',
         'css/polipop.default': './src/sass.js/default.scss.js',
+        'css/polipop.compact': './src/sass.js/compact.scss.js',
+        'css/polipop.minimal': './src/sass.js/minimal.scss.js',
     },
     devtool: 'inline-source-map', // Enables us to see source files in browser dev tools.
     devServer: {

@@ -5,7 +5,7 @@ describe('Test init', () => {
         block: 'selector',
         layout: 'panel',
         position: 'bottom-right',
-        theme: 'minimal',
+        theme: 'compact',
     };
     const classes = {
         block: options.block,
@@ -18,15 +18,19 @@ describe('Test init', () => {
         'block__header-minimize': options.block + '__header-minimize',
         'block__header-title': options.block + '__header-title',
         block__notification: options.block + '__notification',
+        'block__notification-icon': options.block + '__notification-icon',
+        'block__notification-icon-inner':
+            options.block + '__notification-icon-inner',
+        'block__notification-inner': options.block + '__notification-inner',
         'block__notification-close': options.block + '__notification-close',
         'block__notification-content': options.block + '__notification-content',
         'block__notification-title': options.block + '__notification-title',
         block__notification_type_: options.block + '__notification_type_',
         block__notifications: options.block + '__notifications',
-        block_layout: options.block + '_layout_panel',
+        block_layout: options.block + '_layout_' + options.layout,
         block_open: options.block + '_open',
-        block_position: options.block + '_position_bottom-right',
-        block_theme: options.block + '_theme_minimal',
+        block_position: options.block + '_position_' + options.position,
+        block_theme: options.block + '_theme_' + options.theme,
     };
 
     test('getBemClasses()', () => {

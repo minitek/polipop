@@ -2,7 +2,7 @@
 
 /** Common **/
 
-.#{$block}_theme_default {
+.#{$block}_theme_compact {
     font-size: $base-font-size;
 
     .#{$block}__closer {
@@ -17,26 +17,32 @@
     .#{$block}__closer-count {
         background: $success-bg-color;
         color: $white;
-        border-radius: $small-border-radius;
+        border-radius: 0;
         font-weight: $large-font-weight;
     }
 
     .#{$block}__notification {
         color: $dark-grey;
+        padding: 0;
     }
 
     .#{$block}__notification-icon {
-        margin: 0 12px 0 0;
+        padding: 6px 5px 5px;
 
         svg {
             fill: $white;
         }
     }
 
+    .#{$block}__notification-inner {
+        padding: 5px 10px;
+        background: $lighten-15;
+    }
+
     .#{$block}__notification-close {
         background-color: transparent;
         color: inherit;
-        border-radius: 50%;
+        border-radius: 0;
 
         &:hover {
             outline: none;
@@ -92,9 +98,9 @@
 /** Panel layout **/
 
 .#{$block}_layout_panel {
-    &.#{$block}_theme_default {
+    &.#{$block}_theme_compact {
         background-color: $panel-bg-color;
-        border-radius: $base-border-radius;
+        border-radius: 0;
         box-shadow: $light-shadow;
 
         .#{$block}__header {
@@ -171,20 +177,22 @@
 /** Popups layout **/
 
 .#{$block}_layout_popups {
-    &.#{$block}_theme_default {
+    &.#{$block}_theme_compact {
         .#{$block}__notification {
             box-shadow: $light-shadow;
-            border-radius: $base-border-radius;
+            border-radius: 0;
+            border: 0;
         }
 
         .#{$block}__notification-title {
             line-height: $large-line-height;
+            margin: 0 0 3px;
         }
 
         .#{$block}__closer {
             background-color: $darker-grey;
             box-shadow: $light-shadow;
-            border-radius: $base-border-radius;
+            border-radius: 0;
             font-weight: $base-font-weight;
             color: $lightest-grey;
             border-color: $darkest-grey;

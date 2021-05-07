@@ -12,12 +12,16 @@ if (process.env.MIN_POLIPOP === '0') {
     entry = {
         'css/polipop.core': './src/sass.js/core.scss.js',
         'css/polipop.default': './src/sass.js/default.scss.js',
+        'css/polipop.compact': './src/sass.js/compact.scss.js',
+        'css/polipop.minimal': './src/sass.js/minimal.scss.js',
     };
 } else if (process.env.MIN_POLIPOP === '1') {
     mode = 'production';
     entry = {
         'css/polipop.core.min': './src/sass.js/core.scss.js',
         'css/polipop.default.min': './src/sass.js/default.scss.js',
+        'css/polipop.compact.min': './src/sass.js/compact.scss.js',
+        'css/polipop.minimal.min': './src/sass.js/minimal.scss.js',
     };
     sourceMap = false; // Set true to generate source maps for minified files.
     devtool = sourceMap ? 'source-map' : false;
