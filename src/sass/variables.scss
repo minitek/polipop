@@ -5,7 +5,8 @@ $base-width: 350px;
 $panel-width: 400px;
 $header-height: 44px;
 
-$small-line-height: 14px;
+$smaller-line-height: 14px;
+$small-line-height: 20px;
 $base-line-height: 22px;
 $large-line-height: 24px;
 
@@ -17,6 +18,8 @@ $large-font-size: 20px;
 $base-font-weight: 400;
 $large-font-weight: 600;
 
+$base-icon-size: 20px;
+
 $small-border-radius: 3px;
 $base-border-radius: 5px;
 
@@ -27,19 +30,18 @@ $vertical-margin: 10px;
 $horizontal-margin: 10px;
 
 $light-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-$top-shadow: 0 -1px 2px rgba(0, 0, 0, 0.05);
-$bottom-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+$lighter-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 
 $white: #ffffff;
 $grey: #777777;
 $light-grey: #999999;
 $lighter-grey: #e8e8e8;
 $lightest-grey: #eeeeee;
-$transparent-grey: rgba(0, 0, 0, 0.05);
+$darken-5: rgba(0, 0, 0, 0.05);
+$lighten-15: rgba(255, 255, 255, 0.15);
 $dark-grey: #555555;
 $darker-grey: #333333;
 $darkest-grey: #222222;
-$black: #111111;
 
 $panel-bg-color: #f2f7fa;
 $header-bg-color: #edf4f9;
@@ -47,15 +49,19 @@ $header-bg-color: #edf4f9;
 $success-bg-color: #0ec47d;
 $success-border-color: #0ec47d;
 $success-color: #0daf71;
+$success-border-top-color: #0daf71;
 
 $info-bg-color: #00b1fe;
 $info-border-color: #00b1fe;
 $info-color: #009de0;
+$info-border-top-color: #009de0;
 
 $warning-bg-color: #ffc107;
 $warning-border-color: #ffc107;
 $warning-color: #ff8b07;
+$warning-border-top-color: #e0aa07;
 
 $error-bg-color: #f45a53;
 $error-border-color: #f45a53;
-$error-color: #f45a53;
+$error-color: #e6554d;
+$error-border-top-color: #d64f48;

@@ -8,7 +8,7 @@ describe('Test Polipop', () => {
         block: 'mypolipop',
         layout: 'panel',
         position: 'center',
-        theme: 'minimal',
+        theme: 'compact',
     };
     const polipop = new Polipop(selector, options);
     const classes = {
@@ -22,6 +22,10 @@ describe('Test Polipop', () => {
         'block__header-minimize': options.block + '__header-minimize',
         'block__header-title': options.block + '__header-title',
         block__notification: options.block + '__notification',
+        'block__notification-icon': options.block + '__notification-icon',
+        'block__notification-icon-inner':
+            options.block + '__notification-icon-inner',
+        'block__notification-inner': options.block + '__notification-inner',
         'block__notification-close': options.block + '__notification-close',
         'block__notification-content': options.block + '__notification-content',
         'block__notification-title': options.block + '__notification-title',

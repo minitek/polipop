@@ -225,6 +225,10 @@ export function getBemClasses(options) {
         'block__closer-text': options.block + '__closer-text',
         'block__closer-count': options.block + '__closer-count',
         block__notification: options.block + '__notification',
+        'block__notification-icon': options.block + '__notification-icon',
+        'block__notification-icon-inner':
+            options.block + '__notification-icon-inner',
+        'block__notification-inner': options.block + '__notification-inner',
         'block__notification-title': options.block + '__notification-title',
         'block__notification-close': options.block + '__notification-close',
         'block__notification-content': options.block + '__notification-content',

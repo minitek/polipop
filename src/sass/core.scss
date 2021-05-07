@@ -68,9 +68,22 @@
     background-color: $white;
 }
 
+.#{$block}__notification-icon {
+    float: left;
+
+    svg {
+        width: $base-icon-size;
+        line-height: $small-line-height;
+    }
+}
+
+.#{$block}__notification-inner {
+    overflow: hidden;
+}
+
 .#{$block}__notification-title {
     font-size: $title-font-size;
-    font-weight: $base-font-weight;
+    font-weight: $large-font-weight;
 }
 
 .#{$block}__notification-close {
@@ -82,7 +95,7 @@
     height: 22px;
     line-height: $base-line-height;
     font-size: $title-font-size;
-    font-weight: $base-font-weight;
+    font-weight: $large-font-weight;
 
     &:focus {
         outline: none;
@@ -201,7 +214,7 @@
     padding: 3px;
     min-width: 20px;
     height: 20px;
-    line-height: $small-line-height;
+    line-height: $smaller-line-height;
     vertical-align: middle;
     text-align: center;
     box-sizing: border-box;
@@ -221,8 +234,8 @@
 
 .#{$block}_layout_popups {
     .#{$block}__notification {
-        border: 1px solid transparent;
         box-shadow: $light-shadow;
+        border: 1px solid transparent;
     }
 
     .#{$block}__notification-title {

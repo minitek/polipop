@@ -45,13 +45,24 @@ export default {
     layout: 'popups',
 
     /**
-     * The css theme of the Polipop wrapper. Accepted values:
+     * The css theme of the Polipop wrapper. Can only be set on class instantiation.
+     * Accepted values:
      * - 'default'
+     * - 'compact'
+     * - 'minimal'
      * - or any custom theme
      *
      * @type {String}
      */
     theme: 'default',
+
+    /**
+     * A boolean designating whether each notification element displays an icon,
+     * according to the notification type.
+     *
+     * @type {Boolean}
+     */
+    icons: true,
 
     /**
      * Designates whether a notification element should be appended or prepended to the
