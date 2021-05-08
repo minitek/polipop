@@ -1,5 +1,10 @@
 import { _loop } from './loop';
-import { togglePanelHeight, trackTimeLeft, checkOverflow } from './callbacks';
+import {
+    togglePanelHeight,
+    startPauseOnHover,
+    endPauseOnHover,
+    checkOverflow,
+} from './callbacks';
 
 /**
  * Creates the wrapper element and all its children elements, adds event listeners
@@ -23,11 +28,15 @@ export function _init() {
         self.options.ready.call(self);
     });
 
-    self._wrapper.addEventListener('mouseover', () => trackTimeLeft.call(self));
+    if (self.options.pauseOnHover) {
+        self._wrapper.addEventListener('mouseenter', () =>
+            startPauseOnHover.call(self)
+        );
 
-    self._wrapper.addEventListener('mouseout', () => {
-        if (self.options.pauseOnHover) self._pauseOnHover = false;
-    });
+        self._wrapper.addEventListener('mouseleave', () =>
+            endPauseOnHover.call(self, event)
+        );
+    }
 
     if (self.options.position !== 'inline')
         window.addEventListener('resize', () => checkOverflow.call(self));
@@ -225,6 +234,11 @@ export function getBemClasses(options) {
         'block__closer-text': options.block + '__closer-text',
         'block__closer-count': options.block + '__closer-count',
         block__notification: options.block + '__notification',
+        'block__notification-progress':
+            options.block + '__notification-progress',
+        'block__notification-progress-inner':
+            options.block + '__notification-progress-inner',
+        'block__notification-outer': options.block + '__notification-outer',
         'block__notification-icon': options.block + '__notification-icon',
         'block__notification-icon-inner':
             options.block + '__notification-icon-inner',

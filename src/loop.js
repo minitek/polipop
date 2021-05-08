@@ -32,28 +32,15 @@ export function _loop() {
  */
 function expirationControl() {
     const self = this;
-    const notHoverPause =
-        self._pauseOnHover === undefined || !self._pauseOnHover;
+    if (self._pauseOnHover) return;
 
     self.elements.forEach((element) => {
-        if (!element.hasChildNodes()) return;
-
-        if (element.timeLeft === false || element.timeLeft === 0) {
-            const hasExpired =
-                element.created !== undefined &&
-                new Date().getTime() - element.created.getTime() >
-                    parseInt(self.options.life, 10);
-            const notSticky = element.sticky === undefined || !element.sticky;
-
-            if (hasExpired && notSticky && notHoverPause)
-                _dispatch(element, 'Polipop.beforeClose');
-        } else if (element.timeLeft > 0 && notHoverPause) {
-            // Recalculate time left.
-            const timePassed =
-                parseInt(self.options.life, 10) - element.timeLeft;
-            element.created = new Date(Date.now() - timePassed);
-            element.timeLeft = false;
-        }
+        if (
+            !element.sticky &&
+            new Date().getTime() - element.created >
+                parseInt(self.options.life, 10)
+        )
+            _dispatch(element, 'Polipop.beforeClose');
     });
 }
 

@@ -28,31 +28,43 @@ export function togglePanelHeight() {
 }
 
 /**
- * Keeps track of how much time is left for each notification.
+ * Pauses expiration control and keeps track of pauseOnHover starting time.
  *
  * @this {Polipop} The Polipop instance.
  *
  * @return {void}
  */
-export function trackTimeLeft() {
+export function startPauseOnHover() {
     const self = this;
-    if (!self.options.pauseOnHover) return;
+    if (self._pauseOnHover === true) return;
+    self._pauseOnHover = true;
+    const pauseTime = new Date().getTime();
 
     self._container
         .querySelectorAll('.' + self._classes.block__notification)
         .forEach((element) => {
-            if (element.timeLeft === false) {
-                let timePassed =
-                    new Date().getTime() - element.created.getTime();
-                timePassed =
-                    timePassed > parseInt(self.options.life, 10)
-                        ? parseInt(self.options.life, 10)
-                        : timePassed;
-                element.timeLeft = parseInt(self.options.life, 10) - timePassed;
-            }
+            element.pauseTime = pauseTime;
+        });
+}
+
+/**
+ * Unpauses expiration control and updates 'created' time property for all
+ * notification elements.
+ *
+ * @this {Polipop} The Polipop instance.
+ *
+ * @return {void}
+ */
+export function endPauseOnHover() {
+    const self = this;
+
+    self._container
+        .querySelectorAll('.' + self._classes.block__notification)
+        .forEach((element) => {
+            element.created += new Date().getTime() - element.pauseTime;
         });
 
-    self._pauseOnHover = true;
+    self._pauseOnHover = false;
 }
 
 /**
@@ -140,12 +152,10 @@ export function onPolipopOpen(notification, element) {
     const animation = animateElement.apply(self, [element, 'in']);
 
     animation.finished.then(function () {
-        element.created = new Date();
-        element.timeLeft = false;
-        element.sticky =
-            notification.sticky !== undefined
-                ? notification.sticky
-                : self.options.sticky;
+        element.created = new Date().getTime();
+
+        if (self.options.progressbar && !element.sticky)
+            startProgress.call(self, element);
 
         updateCloser.call(self);
         overflow.call(self);
@@ -234,4 +244,31 @@ export function onPolipopClose(notification, element) {
  */
 export function onPolipopClick(event, notification, element) {
     notification.click.apply(this, [event, notification, element]);
+}
+
+/**
+ * Starts the progress bar for a notification element.
+ *
+ * @param {Element} element A notification element.
+ * @this {Polipop} The Polipop instance.
+ *
+ * @return {void}
+ */
+function startProgress(element) {
+    const self = this;
+    let width = 0;
+    const interval = self.options.life / 100;
+    const progressBarInner = element.querySelector(
+        '.' + self._classes['block__notification-progress-inner']
+    );
+    const id = setInterval(function () {
+        if (!self._pauseOnHover) {
+            if (width >= 100) {
+                clearInterval(id);
+            } else {
+                width++;
+                progressBarInner.style.width = width + '%';
+            }
+        }
+    }, interval);
 }
