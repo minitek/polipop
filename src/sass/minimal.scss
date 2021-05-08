@@ -26,6 +26,14 @@
         color: $dark-grey;
     }
 
+    .#{$block}__notification-progress {
+        background-color: $darken-8;
+    }
+
+    .#{$block}__notification-outer {
+        padding: $small-padding;
+    }
+
     .#{$block}__notification-icon {
         margin: 0 12px 0 0;
     }
@@ -51,6 +59,10 @@
         background-color: $white;
         color: $success-color;
 
+        .#{$block}__notification-progress-inner {
+            background-color: $success-progress-color;
+        }
+
         .#{$block}__notification-icon {
             svg {
                 fill: $success-color;
@@ -62,6 +74,10 @@
     .#{$block}__notification_type_notice {
         color: $info-color;
 
+        .#{$block}__notification-progress-inner {
+            background-color: $info-progress-color;
+        }
+
         .#{$block}__notification-icon {
             svg {
                 fill: $info-color;
@@ -71,6 +87,10 @@
 
     .#{$block}__notification_type_warning {
         color: $warning-color;
+
+        .#{$block}__notification-progress-inner {
+            background-color: $warning-progress-color;
+        }
 
         .#{$block}__notification-icon {
             svg {
@@ -82,6 +102,10 @@
     .#{$block}__notification_type_error {
         color: $error-color;
 
+        .#{$block}__notification-progress-inner {
+            background-color: $error-progress-color;
+        }
+
         .#{$block}__notification-icon {
             svg {
                 fill: $error-color;
@@ -91,6 +115,10 @@
 
     .#{$block}__notification_type_default {
         color: $dark-grey;
+
+        .#{$block}__notification-progress-inner {
+            background-color: $lighter-grey;
+        }
 
         .#{$block}__notification-icon {
             svg {
@@ -109,7 +137,7 @@
         box-shadow: $light-shadow;
 
         .#{$block}__header {
-            background-color: $lighter-grey;
+            background-color: $lighter2-grey;
         }
 
         .#{$block}__header-inner {

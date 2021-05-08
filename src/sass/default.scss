@@ -25,6 +25,10 @@
         color: $dark-grey;
     }
 
+    .#{$block}__notification-outer {
+        padding: $base-padding;
+    }
+
     .#{$block}__notification-icon {
         margin: 0 12px 0 0;
 
@@ -98,7 +102,7 @@
         box-shadow: $light-shadow;
 
         .#{$block}__header {
-            background-color: $lighter-grey;
+            background-color: $lighter2-grey;
         }
 
         .#{$block}__header-inner {
@@ -150,7 +154,7 @@
         }
 
         .#{$block}__notification_type_default {
-            border-color: $lighter-grey;
+            border-color: $lighter2-grey;
         }
 
         .#{$block}__notification-title {

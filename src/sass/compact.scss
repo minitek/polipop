@@ -100,11 +100,11 @@
 .#{$block}_layout_panel {
     &.#{$block}_theme_compact {
         background-color: $panel-bg-color;
-        border-radius: 0;
+        border-radius: $base-border-radius;
         box-shadow: $light-shadow;
 
         .#{$block}__header {
-            background-color: $lighter-grey;
+            background-color: $lighter2-grey;
         }
 
         .#{$block}__header-inner {
@@ -156,7 +156,7 @@
         }
 
         .#{$block}__notification_type_default {
-            border-color: $lighter-grey;
+            border-color: $lighter2-grey;
         }
 
         .#{$block}__notification-title {
@@ -181,7 +181,6 @@
         .#{$block}__notification {
             box-shadow: $light-shadow;
             border-radius: 0;
-            border: 0;
         }
 
         .#{$block}__notification-title {

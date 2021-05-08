@@ -116,11 +116,31 @@ export function animateElement(element, direction) {
 function createNotification(notification) {
     const element = document.createElement('div');
     element.classList.add(this._classes.block__notification);
+    element.sticky =
+        notification.sticky !== undefined
+            ? notification.sticky
+            : this.options.sticky;
 
     if (notification.type)
         element.classList.add(
             this._classes.block__notification_type_ + notification.type
         );
+
+    if (this.options.progressbar && !element.sticky) {
+        const progressBar = document.createElement('div');
+        progressBar.classList.add(
+            this._classes['block__notification-progress']
+        );
+        const progressBarInner = document.createElement('div');
+        progressBarInner.classList.add(
+            this._classes['block__notification-progress-inner']
+        );
+        progressBar.appendChild(progressBarInner);
+        element.appendChild(progressBar);
+    }
+
+    const outer = document.createElement('div');
+    outer.classList.add(this._classes['block__notification-outer']);
 
     if (this.options.icons) {
         const icon = document.createElement('div');
@@ -131,7 +151,7 @@ function createNotification(notification) {
         );
         iconInner.innerHTML = getSVGIcon(notification.type);
         icon.appendChild(iconInner);
-        element.appendChild(icon);
+        outer.appendChild(icon);
     }
 
     const inner = document.createElement('div');
@@ -160,7 +180,8 @@ function createNotification(notification) {
         inner.appendChild(content);
     }
 
-    element.appendChild(inner);
+    outer.appendChild(inner);
+    element.appendChild(outer);
 
     return element;
 }

@@ -58,14 +58,27 @@
 .#{$block}__notification {
     width: 100%;
     max-width: 100%;
-    padding: 15px;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     text-align: left;
     display: none;
     position: absolute;
     transition: top $duration $easing, bottom $duration $easing;
     background-color: $white;
+    overflow: hidden;
+}
+
+.#{$block}__notification-progress {
+    width: 100%;
+    height: $progress-height;
+    background-color: $darken-4;
+}
+
+.#{$block}__notification-progress-inner {
+    width: 0%;
+    height: $progress-height;
+    background-color: $darken-8;
 }
 
 .#{$block}__notification-icon {
@@ -94,7 +107,7 @@
     width: 22px;
     height: 22px;
     line-height: $base-line-height;
-    font-size: $title-font-size;
+    font-size: $close-font-size;
     font-weight: $large-font-weight;
 
     &:focus {
@@ -235,7 +248,6 @@
 .#{$block}_layout_popups {
     .#{$block}__notification {
         box-shadow: $light-shadow;
-        border: 1px solid transparent;
     }
 
     .#{$block}__notification-title {

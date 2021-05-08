@@ -18,6 +18,11 @@ describe('Test init', () => {
         'block__header-minimize': options.block + '__header-minimize',
         'block__header-title': options.block + '__header-title',
         block__notification: options.block + '__notification',
+        'block__notification-progress':
+            options.block + '__notification-progress',
+        'block__notification-progress-inner':
+            options.block + '__notification-progress-inner',
+        'block__notification-outer': options.block + '__notification-outer',
         'block__notification-icon': options.block + '__notification-icon',
         'block__notification-icon-inner':
             options.block + '__notification-icon-inner',

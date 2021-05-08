@@ -108,6 +108,14 @@ export default {
     life: 3000,
 
     /**
+     * A boolean designating whether the life time progress bar will be displayed for
+     * each notification element.
+     *
+     * @type {Boolean}
+     */
+    progressbar: false,
+
+    /**
      * A boolean designating whether the notifications expiration control should pause
      * when hovering over the wrapper element.
      *
