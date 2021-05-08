@@ -7,6 +7,7 @@
 }
 
 .polipop_position_inline {
+    position: relative;
     width: 100%;
     transition: height 0.25s ease-in-out;
 }
@@ -44,26 +45,53 @@
 
 .polipop__notifications {
     height: 100%;
-    position: relative;
+    position: absolute;
+    left: 0;
+    width: 100%;
     z-index: 998;
 }
 
 .polipop__notification {
     width: 100%;
     max-width: 100%;
-    padding: 15px;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     text-align: left;
     display: none;
     position: absolute;
     transition: top 0.25s ease-in-out, bottom 0.25s ease-in-out;
     background-color: #ffffff;
+    overflow: hidden;
+}
+
+.polipop__notification-progress {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.polipop__notification-progress-inner {
+    width: 0%;
+    height: 4px;
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.polipop__notification-icon {
+    float: left;
+}
+.polipop__notification-icon svg {
+    width: 20px;
+    line-height: 20px;
+}
+
+.polipop__notification-inner {
+    overflow: hidden;
 }
 
 .polipop__notification-title {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .polipop__notification-close {
@@ -75,7 +103,7 @@
     height: 22px;
     line-height: 22px;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
 }
 .polipop__notification-close:focus {
     outline: none;
@@ -89,6 +117,7 @@
 
 .polipop__closer {
     line-height: 22px;
+    font-size: 14px;
     padding: 4px 10px;
     margin: 0;
     cursor: pointer;
@@ -96,21 +125,11 @@
     box-sizing: border-box;
     position: absolute;
     width: 100%;
+    z-index: 999;
 }
 
 .polipop__closer-text {
     vertical-align: middle;
-}
-
-.polipop_position_top-left .polipop__closer,
-.polipop_position_top-right .polipop__closer,
-.polipop_position_center .polipop__closer,
-.polipop_position_inline .polipop__closer {
-    top: 0;
-}
-.polipop_position_bottom-left .polipop__closer,
-.polipop_position_bottom-right .polipop__closer {
-    bottom: 0;
 }
 .polipop_layout_panel {
     width: 400px;
@@ -122,23 +141,67 @@
 .polipop_layout_panel .polipop__notification-title {
     margin: 0 0 5px;
 }
+.polipop_layout_panel.polipop_position_top-right .polipop__notifications,
+.polipop_layout_panel.polipop_position_top-left .polipop__notifications,
+.polipop_layout_panel.polipop_position_center .polipop__notifications,
+.polipop_layout_panel.polipop_position_inline .polipop__notifications {
+    top: 43px;
+}
 .polipop_layout_panel.polipop_position_top-right .polipop__notification,
 .polipop_layout_panel.polipop_position_top-left .polipop__notification,
 .polipop_layout_panel.polipop_position_center .polipop__notification,
 .polipop_layout_panel.polipop_position_inline .polipop__notification {
     border-top: 1px solid transparent;
 }
+.polipop_layout_panel.polipop_position_top-right .polipop__closer,
+.polipop_layout_panel.polipop_position_top-left .polipop__closer,
+.polipop_layout_panel.polipop_position_center .polipop__closer,
+.polipop_layout_panel.polipop_position_inline .polipop__closer {
+    top: 43px;
+}
+.polipop_layout_panel.polipop_position_top-right .polipop__header,
+.polipop_layout_panel.polipop_position_top-left .polipop__header,
+.polipop_layout_panel.polipop_position_center .polipop__header,
+.polipop_layout_panel.polipop_position_inline .polipop__header {
+    top: 0;
+}
+.polipop_layout_panel.polipop_position_top-right .polipop__header-inner,
+.polipop_layout_panel.polipop_position_top-left .polipop__header-inner,
+.polipop_layout_panel.polipop_position_center .polipop__header-inner,
+.polipop_layout_panel.polipop_position_inline .polipop__header-inner {
+    top: 0;
+}
+.polipop_layout_panel.polipop_position_bottom-right .polipop__notifications,
+.polipop_layout_panel.polipop_position_bottom-left .polipop__notifications {
+    bottom: 43px;
+}
 .polipop_layout_panel.polipop_position_bottom-right .polipop__notification,
 .polipop_layout_panel.polipop_position_bottom-left .polipop__notification {
     border-bottom: 1px solid transparent;
 }
+.polipop_layout_panel.polipop_position_bottom-right .polipop__closer,
+.polipop_layout_panel.polipop_position_bottom-left .polipop__closer {
+    bottom: 43px;
+}
+.polipop_layout_panel.polipop_position_bottom-right .polipop__header,
+.polipop_layout_panel.polipop_position_bottom-left .polipop__header {
+    bottom: 0;
+}
+.polipop_layout_panel.polipop_position_bottom-right .polipop__header-inner,
+.polipop_layout_panel.polipop_position_bottom-left .polipop__header-inner {
+    bottom: 0;
+}
 
 .polipop__header {
-    position: relative;
+    position: absolute;
+    height: 44px;
+    width: 100%;
     z-index: 999;
 }
 
 .polipop__header-inner {
+    position: absolute;
+    width: 100%;
     padding: 10px 15px;
     line-height: 22px;
     cursor: pointer;
@@ -171,7 +234,6 @@
     color: #777777;
 }
 .polipop_layout_popups .polipop__notification {
-    border: 1px solid transparent;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 .polipop_layout_popups .polipop__notification-title {
@@ -182,4 +244,24 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     background-color: #333333;
     color: #ffffff;
+}
+.polipop_layout_popups.polipop_position_top-left .polipop__notifications,
+.polipop_layout_popups.polipop_position_top-right .polipop__notifications,
+.polipop_layout_popups.polipop_position_center .polipop__notifications,
+.polipop_layout_popups.polipop_position_inline .polipop__notifications {
+    top: 0;
+}
+.polipop_layout_popups.polipop_position_top-left .polipop__closer,
+.polipop_layout_popups.polipop_position_top-right .polipop__closer,
+.polipop_layout_popups.polipop_position_center .polipop__closer,
+.polipop_layout_popups.polipop_position_inline .polipop__closer {
+    top: 0;
+}
+.polipop_layout_popups.polipop_position_bottom-left .polipop__notifications,
+.polipop_layout_popups.polipop_position_bottom-right .polipop__notifications {
+    bottom: 0;
+}
+.polipop_layout_popups.polipop_position_bottom-left .polipop__closer,
+.polipop_layout_popups.polipop_position_bottom-right .polipop__closer {
+    bottom: 0;
 }
