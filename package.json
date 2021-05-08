@@ -38,7 +38,7 @@
         "clean:dist": "find dist/ -type f -delete",
         "clean:docs": "find docs/dist/ -type f -delete",
         "clean": "npm run clean:dist && npm run clean:docs",
-        "lint": "eslint {src,dist}/**/*.js",
+        "lint": "eslint {src}/**/*.js",
         "prepare": "husky install",
         "test": "jest"
     },
@@ -88,10 +88,6 @@
     },
     "lint-staged": {
         "./src/**/*.js": [
-            "prettier --write",
-            "eslint --fix-dry-run"
-        ],
-        "./dist/!(*min).js": [
             "prettier --write",
             "eslint --fix-dry-run"
         ],
