@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="assets/css/vendor.css" />
     <link rel="stylesheet" href="dist/css/polipop.core.css" /> <!-- virtual file stored in memory and served by webpack-dev-server -->
     <link rel="stylesheet" href="dist/css/polipop.default.css" /> <!-- virtual file stored in memory and served by webpack-dev-server -->
+    <link rel="stylesheet" href="dist/css/polipop.compact.css" /> <!-- virtual file stored in memory and served by webpack-dev-server -->
+    <link rel="stylesheet" href="dist/css/polipop.minimal.css" /> <!-- virtual file stored in memory and served by webpack-dev-server -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 
@@ -71,47 +73,47 @@
 
                 <!-- content -->
                 <article class="col-md-8 content-body">
-
+                  
                   <div class="card stacked mb-3">
-                    <div class="card-header p-2">
+                    <!-- <div class="card-header p-2">
                       <h4 class="fs-20">Info message</h4>
-                    </div>
+                    </div> -->
                     <div class="card-body">
                       <button type="submit" class="btn btn-info btn-sm" id="info">Show info message</button>
                     </div>
                   </div>
 
                   <div class="card stacked mb-3">
-                    <div class="card-header p-2">
+                    <!-- <div class="card-header p-2">
                       <h4 class="fs-20">Success message</h4>
-                    </div>
+                    </div> -->
                     <div class="card-body">
                       <button type="submit" class="btn btn-success btn-sm" id="success">Show success message</button>
                     </div>
                   </div>
 
                   <div class="card stacked mb-3">
-                    <div class="card-header p-2">
+                    <!-- <div class="card-header p-2">
                       <h4 class="fs-20">Warning message</h4>
-                    </div>
+                    </div> -->
                     <div class="card-body">
                       <button type="submit" class="btn btn-warning btn-sm" id="warning">Show warning message</button>
                     </div>
                   </div>
 
                   <div class="card stacked mb-3">
-                    <div class="card-header p-2">
+                    <!-- <div class="card-header p-2">
                       <h4 class="fs-20">Error message</h4>
-                    </div>
+                    </div> -->
                     <div class="card-body">
                       <button type="submit" class="btn btn-danger btn-sm" id="error">Show error message</button>
                     </div>
                   </div>
                   
                   <div class="card stacked">
-                    <div class="card-header p-2">
+                    <!-- <div class="card-header p-2">
                       <h4 class="fs-20">Default message</h4>
-                    </div>
+                    </div> -->
                     <div class="card-body">
                       <button type="submit" class="btn btn-outline-dark btn-sm" id="message">Show default message</button>
                     </div>
@@ -153,6 +155,15 @@
                     </div>
 
                     <div class="mb-3">
+                      <label for="layout">Theme</label>
+                      <select class="custom-select custom-select-md" id="theme">
+                        <option value="default">Default</option>
+                        <option value="compact">Compact</option>
+                        <option value="minimal">Minimal</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
                       <label for="insert">Insert</label>
                       <select class="custom-select custom-select-md" id="insert">
                         <option value="before" selected>Before</option>
@@ -170,8 +181,15 @@
 
                     <div class="mb-3">
                       <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="sticky" checked>
+                        <input type="checkbox" class="custom-control-input" id="sticky">
                         <label class="custom-control-label" for="sticky">Sticky</label>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="progressbar" checked>
+                        <label class="custom-control-label" for="progressbar">Progress bar</label>
                       </div>
                     </div>
 

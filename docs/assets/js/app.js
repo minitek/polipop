@@ -1,176 +1,199 @@
 (function (document) {
-	'use strict';
-	
-	var pp;
-	var selector = 'mypolipop';
+    'use strict';
 
-	function initPolipop(selector, options) {
-		if (document.querySelector(selector))
-			document.querySelector(selector).remove();
+    let pp;
+    const selector = 'mypolipop';
 
-		pp = new Polipop(selector, options);
-	}
+    function initPolipop(selector, options) {
+        if (document.querySelector(selector))
+            document.querySelector(selector).remove();
 
-	document.addEventListener('DOMContentLoaded', function () {
-		var options = {
-			layout: 'popups',
-			insert: 'before',
-			pool: 12,
-			sticky: true,
-			pauseOnHover: true,
-			life: 2000,
-			effect: 'slide',
-			easing: 'ease-in-out'
-		};
+        pp = new Polipop(selector, options);
+    }
 
-		initPolipop(selector, options);
+    document.addEventListener('DOMContentLoaded', function () {
+        const options = {
+            layout: 'popups',
+            position: 'top-right',
+            theme: 'default',
+            icons: true,
+            insert: 'before',
+            pool: 0,
+            sticky: false,
+            pauseOnHover: true,
+            life: 4000,
+            progressbar: true,
+            effect: 'slide',
+            easing: 'ease-in-out',
+        };
 
-		// Info 
-		var info = document.querySelector('#info');
+        initPolipop(selector, options);
 
-		info.addEventListener('click', function (e) {
-			e.preventDefault();
+        // Info
+        const info = document.querySelector('#info');
 
-			pp.add({
-				type: 'info',
-				title: 'Info',
-				content: 'This is an info message.'
-			});
-		});
+        info.addEventListener('click', function (e) {
+            e.preventDefault();
 
-		// Message 
-		var success = document.querySelector('#success');
+            pp.add({
+                type: 'info',
+                title: 'Info',
+                content: 'This is an info message.',
+            });
+        });
 
-		success.addEventListener('click', function (e) {
-			e.preventDefault();
+        // Message
+        const success = document.querySelector('#success');
 
-			pp.add({
-				type: 'success',
-				title: 'Success',
-				content: 'This is a success message.'
-			});
-		});
+        success.addEventListener('click', function (e) {
+            e.preventDefault();
 
-		// Warning 
-		var warning = document.querySelector('#warning');
+            pp.add({
+                type: 'success',
+                title: 'Success',
+                content: 'This is a success message.',
+            });
+        });
 
-		warning.addEventListener('click', function (e) {
-			e.preventDefault();
+        // Warning
+        const warning = document.querySelector('#warning');
 
-			pp.add({
-				type: 'warning',
-				title: 'Warning',
-				content: 'This is a warning message.'
-			});
-		});
+        warning.addEventListener('click', function (e) {
+            e.preventDefault();
 
-		// Error 
-		var error = document.querySelector('#error');
+            pp.add({
+                type: 'warning',
+                title: 'Warning',
+                content: 'This is a warning message.',
+            });
+        });
 
-		error.addEventListener('click', function (e) {
-			e.preventDefault();
+        // Error
+        const error = document.querySelector('#error');
 
-			pp.add({
-				type: 'error',
-				title: 'Error',
-				content: 'This is an error message.'
-			});
-		});
+        error.addEventListener('click', function (e) {
+            e.preventDefault();
 
-		// Default 
-		var message = document.querySelector('#message');
+            pp.add({
+                type: 'error',
+                title: 'Error',
+                content: 'This is an error message.',
+            });
+        });
 
-		message.addEventListener('click', function (e) {
-			e.preventDefault();
+        // Default
+        const message = document.querySelector('#message');
 
-			pp.add({
-				type: 'default',
-				title: 'Message',
-				content: 'This is a default message.'
-			});
-		});
+        message.addEventListener('click', function (e) {
+            e.preventDefault();
 
-		// Layout
-		var _layout = document.querySelector('#layout');
-		_layout.value = 'popups';
+            pp.add({
+                type: 'default',
+                title: 'Message',
+                content: 'This is a default message.',
+            });
+        });
 
-		_layout.addEventListener('change', function (e) {
-			options.layout = this.value;
-			pp.destroy();
-			initPolipop(selector, options);
-		});
+        // Layout
+        const _layout = document.querySelector('#layout');
+        _layout.value = 'popups';
 
-		// Position
-		var _position = document.querySelector('#position');
-		_position.value = 'top-right';
+        _layout.addEventListener('change', function (e) {
+            options.layout = this.value;
+            pp.destroy();
+            initPolipop(selector, options);
+        });
 
-		_position.addEventListener('change', function (e) {
-			options.position = this.value;
+        // Position
+        const _position = document.querySelector('#position');
+        _position.value = 'top-right';
 
-			if (options.position === 'inline')
-				options.appendTo = '#sidebar';
-			else
-				options.appendTo = 'body';
+        _position.addEventListener('change', function (e) {
+            options.position = this.value;
 
-			pp.destroy();
-			initPolipop(selector, options);
-		});
+            if (options.position === 'inline') options.appendTo = '#sidebar';
+            else options.appendTo = 'body';
 
-		// Insert
-		var _insert = document.querySelector('#insert');
-		_insert.value = 'before';
+            pp.destroy();
+            initPolipop(selector, options);
+        });
 
-		_insert.addEventListener('change', function (e) {
-			options.insert = this.value;
-			pp.setOption('insert', options.insert);
-		});
+        // Theme
+        const _theme = document.querySelector('#theme');
+        _theme.value = 'default';
 
-		// Pool
-		var _pool = document.querySelector('#pool');
-		_pool.value = 0;
+        _theme.addEventListener('change', function (e) {
+            options.theme = this.value;
+            pp.destroy();
+            initPolipop(selector, options);
+        });
 
-		_pool.addEventListener('input', function (e) {
-			document.querySelector('#poolhelp span b').textContent = (parseInt(this.value, 10) === 0) ? 'off' : '> ' + this.value;
-			options.pool = parseInt(this.value, 10);
-			pp.setOption('pool', options.pool);
-		});
+        // Insert
+        const _insert = document.querySelector('#insert');
+        _insert.value = 'before';
 
-		// Effect
-		var _effect = document.querySelector('#effect');
-		_effect.value = 'fade';
+        _insert.addEventListener('change', function (e) {
+            options.insert = this.value;
+            pp.setOption('insert', options.insert);
+        });
 
-		_effect.addEventListener('change', function (e) {
-			options.effect = this.value;
-			pp.setOption('effect', options.effect);
-		});
+        // Pool
+        const _pool = document.querySelector('#pool');
+        _pool.value = 0;
 
-		// Life time
-		var _life = document.querySelector('#life');
-		_life.value = 2000;
+        _pool.addEventListener('input', function (e) {
+            document.querySelector('#poolhelp span b').textContent =
+                parseInt(this.value, 10) === 0 ? 'off' : '> ' + this.value;
+            options.pool = parseInt(this.value, 10);
+            pp.setOption('pool', options.pool);
+        });
 
-		_life.addEventListener('input', function (e) {
-			document.querySelector('#lifehelp span b').textContent = (this.value / 1000).toFixed(1);
-			options.life = parseInt(this.value, 10);
-			pp.setOption('life', options.life);
-		});
+        // Effect
+        const _effect = document.querySelector('#effect');
+        _effect.value = 'slide';
 
-		// Pause on hover
-		var _pauseonhover = document.querySelector('#pauseonhover');
-		_pauseonhover.checked = true;
+        _effect.addEventListener('change', function (e) {
+            options.effect = this.value;
+            pp.setOption('effect', options.effect);
+        });
 
-		_pauseonhover.addEventListener('change', function (e) {
-			options.pauseOnHover = this.checked;
-			pp.setOption('pauseOnHover', options.pauseOnHover);
-		});
+        // Life time
+        const _life = document.querySelector('#life');
+        _life.value = 2000;
 
-		// Sticky
-		var _sticky = document.querySelector('#sticky');
-		_sticky.checked = true;
+        _life.addEventListener('input', function (e) {
+            document.querySelector('#lifehelp span b').textContent = (
+                this.value / 1000
+            ).toFixed(1);
+            options.life = parseInt(this.value, 10);
+            pp.setOption('life', options.life);
+        });
 
-		_sticky.addEventListener('change', function (e) {
-			options.sticky = this.checked;
-			pp.setOption('sticky', options.sticky);
-		});
-	});
+        // Pause on hover
+        const _pauseonhover = document.querySelector('#pauseonhover');
+        _pauseonhover.checked = true;
 
+        _pauseonhover.addEventListener('change', function (e) {
+            options.pauseOnHover = this.checked;
+            pp.setOption('pauseOnHover', options.pauseOnHover);
+        });
+
+        // Sticky
+        const _sticky = document.querySelector('#sticky');
+        _sticky.checked = false;
+
+        _sticky.addEventListener('change', function (e) {
+            options.sticky = this.checked;
+            pp.setOption('sticky', options.sticky);
+        });
+
+        // Progress bar
+        const _progressbar = document.querySelector('#progressbar');
+        _progressbar.checked = true;
+
+        _progressbar.addEventListener('change', function (e) {
+            options.progressbar = this.checked;
+            pp.setOption('progressbar', options.progressbar);
+        });
+    });
 })(document);
