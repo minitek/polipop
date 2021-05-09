@@ -154,7 +154,7 @@ export function onPolipopOpen(notification, element) {
 
     animation.finished.then(function () {
         element.created = new Date().getTime();
-
+        if (self._pauseOnHover) element.pauseTime = new Date().getTime();
         if (self.options.progressbar && !element.sticky)
             startProgressBar.call(self, element);
 
