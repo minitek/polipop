@@ -200,6 +200,7 @@ export default class Polipop {
             'headerText',
             'closer',
             'interval',
+            'pauseOnHover',
         ];
 
         if (ignore.includes(key)) return;

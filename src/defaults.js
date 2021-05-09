@@ -117,7 +117,7 @@ export default {
 
     /**
      * A boolean designating whether the notifications expiration control should pause
-     * when hovering over the wrapper element.
+     * when hovering over the wrapper element. Can only be set on class instantiation.
      *
      * @type {Boolean}
      */
