@@ -408,7 +408,7 @@ export function checkElementOverflow(notification, element) {
  *
  * @return {String} An HTML string representing the SVG icon.
  */
-function getSVGIcon(type) {
+export function getSVGIcon(type) {
     let svg;
 
     switch (type) {
