@@ -7,6 +7,7 @@ import {
     updateHeaderCount,
     repositionElements,
     checkElementOverflow,
+    startProgressBar,
 } from './control';
 
 /**
@@ -155,7 +156,7 @@ export function onPolipopOpen(notification, element) {
         element.created = new Date().getTime();
 
         if (self.options.progressbar && !element.sticky)
-            startProgress.call(self, element);
+            startProgressBar.call(self, element);
 
         updateCloser.call(self);
         overflow.call(self);
@@ -244,31 +245,4 @@ export function onPolipopClose(notification, element) {
  */
 export function onPolipopClick(event, notification, element) {
     notification.click.apply(this, [event, notification, element]);
-}
-
-/**
- * Starts the progress bar for a notification element.
- *
- * @param {Element} element A notification element.
- * @this {Polipop} The Polipop instance.
- *
- * @return {void}
- */
-function startProgress(element) {
-    const self = this;
-    let width = 0;
-    const interval = self.options.life / 100;
-    const progressBarInner = element.querySelector(
-        '.' + self._classes['block__notification-progress-inner']
-    );
-    const id = setInterval(function () {
-        if (!self._pauseOnHover) {
-            if (width >= 100) {
-                clearInterval(id);
-            } else {
-                width++;
-                progressBarInner.style.width = width + '%';
-            }
-        }
-    }, interval);
 }
