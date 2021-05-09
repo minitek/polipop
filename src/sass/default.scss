@@ -79,6 +79,10 @@
     .#{$block}__notification_type_error {
         background-color: $error-bg-color;
         color: $white;
+
+        .#{$block}__notification-progress-inner {
+            background-color: $darken-12;
+        }
     }
 
     .#{$block}__notification_type_default {
