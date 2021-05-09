@@ -26,6 +26,10 @@
         padding: 0;
     }
 
+    .#{$block}__notification-progress {
+        background-color: transparent;
+    }
+
     .#{$block}__notification-icon {
         padding: 6px 5px 5px;
 
