@@ -1,4 +1,5 @@
 const path = require('path');
+// const CompressionPlugin = require('compression-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 let entry;
 let sourceMap = false;
@@ -36,6 +37,7 @@ module.exports = {
             },
         ],
     },
+    // plugins: [new CompressionPlugin()],
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
