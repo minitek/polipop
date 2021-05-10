@@ -61,6 +61,7 @@
         "autoprefixer": "^10.2.5",
         "babel-jest": "^26.6.3",
         "babel-loader": "^8.2.2",
+        "compression-webpack-plugin": "^7.1.2",
         "css-loader": "^5.2.4",
         "css-minimizer-webpack-plugin": "^2.0.0",
         "eslint": "^7.25.0",
