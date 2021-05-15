@@ -5,7 +5,8 @@
     "author": "Yannis Maragos",
     "license": "GPL-3.0",
     "homepage": "https://github.com/minitek/polipop#readme",
-    "main": "dist/polipop.js",
+    "main": "dist/polipop.min.js",
+    "unpkg": "dist/polipop.min.js",
     "files": [
         "src",
         "dist"
