@@ -7,7 +7,7 @@ A dependency-free JavaScript library for creating discreet pop-up notifications.
 
 ## Demo
 
-See demo at [minitek.github.io/polipop](minitek.github.io/polipop).
+See demo at [https://minitek.github.io/polipop/](minitek.github.io/polipop).
 
 ## Documentation
 
