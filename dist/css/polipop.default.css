@@ -63,6 +63,11 @@
     background-color: #f76860;
     color: #ffffff;
 }
+.polipop_theme_default
+    .polipop__notification_type_error
+    .polipop__notification-progress-inner {
+    background-color: rgba(0, 0, 0, 0.12);
+}
 .polipop_theme_default .polipop__notification_type_default {
     background-color: #ffffff;
     color: #555555;

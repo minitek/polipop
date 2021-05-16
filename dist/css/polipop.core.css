@@ -74,7 +74,7 @@
 .polipop__notification-progress-inner {
     width: 0%;
     height: 4px;
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .polipop__notification-icon {
