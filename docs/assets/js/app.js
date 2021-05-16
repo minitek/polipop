@@ -175,7 +175,8 @@
 
         _pauseonhover.addEventListener('change', function (e) {
             options.pauseOnHover = this.checked;
-            pp.setOption('pauseOnHover', options.pauseOnHover);
+            pp.destroy();
+            initPolipop(selector, options);
         });
 
         // Sticky
