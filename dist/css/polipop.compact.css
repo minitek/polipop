@@ -18,6 +18,9 @@
     color: #555555;
     padding: 0;
 }
+.polipop_theme_compact .polipop__notification-progress {
+    background-color: transparent;
+}
 .polipop_theme_compact .polipop__notification-icon {
     padding: 6px 5px 5px;
 }
