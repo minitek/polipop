@@ -168,7 +168,7 @@ var polipop = new Polipop(selector, options);
 
 Type: `String`
 
-A selector `representing the id of the element on which to instantiate Polipop.
+A selector representing the id of the element on which to instantiate Polipop.
 
 #### `options`
 
@@ -199,7 +199,7 @@ polipop.add({
 });
 ```
 
-See [add](#add) method.
+See [add](<#add(notification)>) method.
 
 ## Configuration options
 
@@ -234,7 +234,7 @@ var polipop = new Polipop('mypolipop', {
 | `closer`         | `Boolean`                               | Default: `true` <br> A boolean designating whether the closer button element will be displayed when there are rendered notification elements. Can only be set on class instantiation.                                                                                |
 | `closeText`      | `String`                                | Default: `Close` <br> The text that is displayed inside the closer button element when the notifications queue is empty.                                                                                                                                             |
 | `loadMoreText`   | `String`                                | Default: `Load more` <br> The text that is displayed inside the closer button element when the notifications queue contains queued notification objects.                                                                                                             |
-| `hideEmpty`      | `Boolean`                               | Default: `false` <br> A boolean designating whether the 'panel' layout wrapper element will be hidden when there are no rendered notification elements.                                                                                                              |
+| `hideEmpty`      | `Boolean`                               | Default: `false` <br> A boolean designating whether the `panel` layout wrapper element will be hidden when there are no rendered notification elements.                                                                                                              |
 | `interval`       | `Number`                                | Default: `250` <br> The time, in milliseconds, the timer should delay in between executions of the `_loop` function. Can only be set on class instantiation.                                                                                                         |
 | `effect`         | `String`                                | Default: `fade` <br> The animation effect when adding or removing notification elements. <br> Accepted values: `fade` or `slide`.                                                                                                                                    |
 | `easing`         | `String`                                | Default: `linear` <br> The rate of the animation's change over time. <br> Accepted values: `linear`, `ease`, `ease-in`, `ease-out`, `ease-in-out` or a custom `cubic-bezier` value.                                                                                  |
@@ -278,7 +278,7 @@ var queue = polipop.queue;
 
 ### `elements`
 
-Type: `HTMLCollection | null`
+Type: `HTMLCollection|null`
 
 Default: `null`
 
@@ -416,7 +416,7 @@ A Polipop instance dispatches the following events:
 A callback function invoked immediately after the wrapper element has been rendered into the DOM.
 
 ```js
-var polipop = new Polipop('polipop', {
+var polipop = new Polipop('mypolipop', {
   ready: function () {
     ...
   },
@@ -430,7 +430,7 @@ A callback function invoked immediately after a notification object has been add
 `{Object} notification` - A notification object.
 
 ```js
-var polipop = new Polipop('polipop', {
+var polipop = new Polipop('mypolipop', {
   add: function (notification) {
     ...
   }
@@ -456,7 +456,7 @@ A callback function invoked immediately before a notification element has been r
 `{Element} element` - A notification element.
 
 ```js
-var polipop = new Polipop('polipop', {
+var polipop = new Polipop('mypolipop', {
   beforeOpen: function (notification, element) {
     ...
   }
@@ -482,7 +482,7 @@ A callback function invoked immediately after a notification element has been re
 `{Element} element` - A notification element.
 
 ```js
-var polipop = new Polipop('polipop', {
+var polipop = new Polipop('mypolipop', {
   open: function (notification, element) {
     ...
   }
@@ -508,7 +508,7 @@ A callback function invoked immediately after a notification element has been re
 `{Element} element` - A notification element.
 
 ```js
-var polipop = new Polipop('polipop', {
+var polipop = new Polipop('mypolipop', {
   afterOpen: function (notification, element) {
     ...
   }
@@ -534,7 +534,7 @@ A callback function invoked immediately after the `Polipop.beforeClose` event ha
 `{Element} element` - A notification element.
 
 ```js
-var polipop = new Polipop('polipop', {
+var polipop = new Polipop('mypolipop', {
   beforeClose: function (notification, element) {
     ...
   }
@@ -560,7 +560,7 @@ A callback function invoked immediately after the element's closing animation ha
 `{Element} element` - A notification element.
 
 ```js
-var polipop = new Polipop('polipop', {
+var polipop = new Polipop('mypolipop', {
   close: function (notification, element) {
     ...
   }
@@ -587,7 +587,7 @@ A callback function invoked immediately after a notification element has been cl
 `{Element}` element - A notification element.
 
 ```js
-var polipop = new Polipop('polipop', {
+var polipop = new Polipop('mypolipop', {
   click: function (event, notification, element) {
     ...
   }
